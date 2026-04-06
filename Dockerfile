@@ -7,6 +7,7 @@ RUN mvn clean package -DskipTests
 # Package stage
 FROM eclipse-temurin:21-jdk-alpine
 WORKDIR /app
+# Use the exact name from your pom.xml instead of a wildcard
 COPY --from=build /app/target/song-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "app.jar"]
